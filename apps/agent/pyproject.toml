@@ -2,6 +2,7 @@
 name = "pet-guardian-agent"
 version = "0.1.0"
 description = "Pet Guardian ADK agent service backed by Gemini, MongoDB MCP, and MongoDB Atlas."
+license = { text = "MIT" }
 requires-python = ">=3.11"
 dependencies = [
   "fastapi>=0.115,<1",
