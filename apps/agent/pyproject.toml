@@ -1,0 +1,18 @@
+[project]
+name = "pet-guardian-agent"
+version = "0.1.0"
+description = "Pet Guardian ADK agent service backed by Gemini, MongoDB MCP, and MongoDB Atlas."
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.34,<1",
+  "pydantic>=2.10,<3",
+  "python-dotenv==1.0.1",
+  "pymongo>=4.10,<5",
+  "google-adk==2.0.0",
+  "google-genai>=1.72,<2",
+  "mcp>=1.27,<2",
+]
+
+[tool.ruff]
+line-length = 100

@@ -1,0 +1,42 @@
+services:
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - pet_guardian_mongo:/data/db
+
+  agent:
+    build:
+      context: ./apps/agent
+    environment:
+      DEMO_MODE: "true"
+      DEMO_RESET_KEY: demo123
+      MONGODB_URI: mongodb://mongo:27017/pet_guardian
+      MONGODB_DB: pet_guardian
+      MDB_MCP_CONNECTION_STRING: mongodb://mongo:27017/pet_guardian
+      MDB_MCP_COMMAND: mongodb-mcp-server
+      MDB_MCP_ARGS: ""
+      MDB_MCP_TIMEOUT_SECONDS: "8"
+      GOOGLE_CLOUD_LOCATION: us-central1
+      GEMINI_MODEL: gemini-2.5-flash
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+
+  web:
+    build:
+      context: ./apps/web
+    environment:
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      PET_GUARDIAN_AGENT_URL: http://agent:8080
+      DEMO_MODE: "true"
+      DEMO_RESET_KEY: demo123
+    ports:
+      - "3000:3000"
+    depends_on:
+      - agent
+
+volumes:
+  pet_guardian_mongo:
