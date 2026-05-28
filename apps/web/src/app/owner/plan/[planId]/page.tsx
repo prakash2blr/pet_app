@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AppHeader } from "@/components/AppHeader";
 import { CopyLinkButton } from "@/components/CopyLinkButton";
 import { GeneratedPlanCard } from "@/components/GeneratedPlanCard";
+import { HeaderPlanLinks } from "@/components/HeaderPlanLinks";
 import { agentFetch } from "@/lib/agent";
 import type { PlanContext } from "@/types";
 
@@ -18,7 +19,10 @@ export default async function OwnerPlanPage({
   return (
     <main className="min-h-screen bg-[#f7faf6] px-5 py-6 sm:px-8">
       <div className="mx-auto max-w-5xl">
-        <AppHeader href="/" />
+        <AppHeader
+          href="/"
+          rightSlot={<HeaderPlanLinks planId={context.plan._id} shareToken={context.plan.shareToken} showPlanReview={false} />}
+        />
         <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_300px]">
           <GeneratedPlanCard context={context} />
           <aside className="space-y-3 lg:sticky lg:top-5 lg:self-start">

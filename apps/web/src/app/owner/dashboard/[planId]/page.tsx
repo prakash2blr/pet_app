@@ -1,6 +1,7 @@
 import { AlertTriangle, Search } from "lucide-react";
 import Link from "next/link";
 import { AppHeader } from "@/components/AppHeader";
+import { HeaderPlanLinks } from "@/components/HeaderPlanLinks";
 import { OwnerDashboardSummary } from "@/components/OwnerDashboardSummary";
 import { TaskCard } from "@/components/TaskCard";
 import { agentFetch } from "@/lib/agent";
@@ -17,7 +18,10 @@ export default async function OwnerDashboardPage({
   return (
     <main className="min-h-screen bg-[#f7faf6] px-5 py-6 sm:px-8">
       <div className="mx-auto max-w-6xl">
-        <AppHeader href={`/owner/plan/${planId}`} />
+        <AppHeader
+          href={`/owner/plan/${planId}`}
+          rightSlot={<HeaderPlanLinks planId={planId} shareToken={context.plan.shareToken} showDashboard={false} />}
+        />
         <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-3xl font-black text-ink">{context.plan.title}</h1>

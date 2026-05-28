@@ -14,7 +14,7 @@ export function AppHeader({ href = "/", variant = "light", rightSlot, className 
 
   return (
     <header
-      className={`flex min-h-16 items-center justify-between gap-4 rounded-lg border px-4 ${
+      className={`flex min-h-16 flex-col items-stretch justify-between gap-4 rounded-lg border px-4 py-3 sm:flex-row sm:items-center ${
         isDark ? "border-white/20 bg-white/10 backdrop-blur" : "border-emerald-100 bg-white/85 shadow-sm"
       } ${className}`}
     >
@@ -33,7 +33,7 @@ export function AppHeader({ href = "/", variant = "light", rightSlot, className 
           </span>
         </span>
       </Link>
-      {rightSlot ? <div className="flex shrink-0 items-center gap-2">{rightSlot}</div> : null}
+      {rightSlot ? <div className="flex shrink-0 items-center justify-start gap-2 sm:justify-end">{rightSlot}</div> : null}
     </header>
   );
 }

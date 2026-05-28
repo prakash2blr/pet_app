@@ -1,5 +1,6 @@
 import { AppHeader } from "@/components/AppHeader";
 import { EmergencyForm } from "@/components/EmergencyForm";
+import { HeaderPlanLinks } from "@/components/HeaderPlanLinks";
 import { agentFetch } from "@/lib/agent";
 import type { PlanContext } from "@/types";
 
@@ -17,7 +18,10 @@ export default async function EmergencyPage({
   return (
     <main className="min-h-screen bg-[#f7faf6] px-5 py-6 sm:px-8">
       <div className="mx-auto max-w-4xl">
-        <AppHeader href={`/owner/dashboard/${planId}`} />
+        <AppHeader
+          href={`/owner/dashboard/${planId}`}
+          rightSlot={<HeaderPlanLinks planId={planId} shareToken={context.plan.shareToken} />}
+        />
         <div className="mt-5">
           <h1 className="text-3xl font-black text-ink">Emergency Mode</h1>
           <p className="mt-2 text-slate-600">

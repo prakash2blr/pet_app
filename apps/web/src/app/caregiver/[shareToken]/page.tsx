@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { AppHeader } from "@/components/AppHeader";
 import { CheckInForm } from "@/components/CheckInForm";
+import { HeaderPlanLinks } from "@/components/HeaderPlanLinks";
 import { agentFetch } from "@/lib/agent";
 import type { PlanContext } from "@/types";
 
@@ -18,7 +19,10 @@ export default async function CaregiverPage({
   return (
     <main className="min-h-screen bg-[#f7faf6] px-5 py-6 sm:px-8">
       <div className="mx-auto max-w-3xl">
-        <AppHeader href="/" />
+        <AppHeader
+          href="/"
+          rightSlot={<HeaderPlanLinks planId={plan._id} shareToken={plan.shareToken} showCaregiver={false} />}
+        />
         <div className="mt-5 rounded-lg border border-emerald-100 bg-white p-5 shadow-soft">
           <p className="text-sm font-semibold uppercase tracking-wide text-leaf">Caregiver Checklist</p>
           <h1 className="mt-1 text-3xl font-black text-ink">{dog.name}</h1>
