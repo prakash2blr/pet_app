@@ -3,7 +3,6 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { AppHeader } from "@/components/AppHeader";
 import { DemoButtons } from "@/components/DemoButtons";
-import { DemoQuickLinks } from "@/components/DemoQuickLinks";
 
 export default function Home() {
   return (
@@ -11,7 +10,7 @@ export default function Home() {
       <section className="hero-photo relative flex min-h-[82vh] items-end">
         <div className="absolute inset-x-0 top-0 z-10">
           <div className="mx-auto w-full max-w-6xl px-5 pt-4 sm:px-8">
-            <AppHeader variant="dark" rightSlot={<DemoQuickLinks variant="dark" />} />
+            <AppHeader variant="dark" />
           </div>
         </div>
         <div className="mx-auto w-full max-w-6xl px-5 pb-10 pt-20 sm:px-8 lg:pb-16">
